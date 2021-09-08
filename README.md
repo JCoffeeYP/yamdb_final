@@ -28,7 +28,7 @@ PostgeSQL     | 12.4
 ## Инструкция по установке
 
 1. При необходимости установить Docker и Docker-Compose ([руководство по установке](https://www.docker.com/get-started/ "https://www.docker.com/get-started"))
-2. Склонировать проект 
+2. Склонировать проект `git clone https://github.com/JCoffeeYP/yamdb_final.git`
 3. Настроить базу данных PostgreSQL. Для этого необходимо в корне проекта создать файл `.env` и объявить следующие переменные:
 - `DB_NAME=postgres`
 - `DB_ENGINE=django.db.backends.postgresql`
@@ -37,7 +37,7 @@ PostgeSQL     | 12.4
 - `DB_HOST=db`
 - `DB_PORT=5432`
 - `SECRET_KEY='cHaNgE-Me_NOW!!!'` (ОБЯЗАТЕЛЬНО СОЗДАТЬ СВОЙ ПАРОЛЬ ([Генератор secret key для Django-проектов](https://djecrety.ir/ "https://djecrety.ir/")))
-- `HOSTS_LIST='web', 'localhost'` (Установить рабочий ip-адрес или указать доменное имя. Несколько адресов указываются через запятую)
+- `HOSTS_LIST='web localhost 84.201.141.255'` (Установить рабочий ip-адрес или указать доменное имя. Несколько адресов указываются через пробел)
 4. Настроить nginx. Для этого в файле `./nginx/default.conf` указать используемый ip-адрес
 5. В терминале развернуть контейнер командой `docker-compose up --build`
 6. Создать новое окно терминала и выполнить следующие команды:
@@ -47,6 +47,7 @@ PostgeSQL     | 12.4
 7. Для создания суперпользователя воспользоваться командой `docker-compose exec web python manage.py createsuperuser`
 8. Для заполения базы данных тестовыми объектами использовать команду `docker-compose exec web python manage.py loaddata fixtures.json`
 9. Проект готов к работе!
+10. Для запуска тестов выполнить команду `docker-compose exec web pytest`
 
 ## Эндпоинты
 
