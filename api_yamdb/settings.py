@@ -7,7 +7,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='cHaNgE-Me_NOW!!!')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.environ.get('HOSTS_LIST', default='*').split()
 
 
 INSTALLED_APPS = [
@@ -56,7 +56,7 @@ WSGI_APPLICATION = 'api_yamdb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': os.environ.get('DB_ENGINE', default='django.db.backends.postgresql'),
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('POSTGRES_USER'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
